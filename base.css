@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+.cursor-pointer {
+    cursor: pointer;
+}

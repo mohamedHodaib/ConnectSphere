@@ -5,6 +5,13 @@
     font-family: var(--font-family);
 }
 
+body {
+    background-color: var(--color-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
 a {
     text-decoration: none;
@@ -14,3 +21,5 @@ a {
 .cursor-pointer {
     cursor: pointer;
 }
+
+

@@ -1,0 +1,22 @@
+
+/* Login page */
+
+.login_card_form_group_input:focus {
+    outline: none;
+    border-width: 2px;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
+}
+
+.login_card_link:hover {
+    color: var(--color-primary-hover);
+}
+
+.login_card_form_submit:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.login_card_form_group_input[type="checkbox"]:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}

@@ -14,173 +14,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- style files -->
-    <link rel="stylesheet" href="designsystem.css">
-    <link rel="stylesheet" href="base.css">
-    <style>
-        body {
-            background-color: var(--color-background);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+    <link rel="stylesheet" href="css/designsystem.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/state.css">
 
-        .login_card {
-            width: 448px;
-            padding: 40px;
-            background-color: var(--color-surface);
-            border: 1px solid #E2E8F8;
-            border-radius: 12px;
-            box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.06);
-            backdrop-filter: blur(24px);
-        }
-
-        .login_card_form {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-6);
-        }
-
-        .login_card_heading {
-            text-align: center;
-            margin-bottom: var(--spacing-8);
-        }
-
-        .login_card_heading_header {
-            font-size: 30px;
-            margin-bottom: var(--spacing-3);
-            color: var(--color-primary);
-            letter-spacing: -0.75px;
-        }
-
-        .login_card_text {
-            font-family: Be Vietnam Pro, sans-serif;
-            font-size: 14px;
-        }
-
-        .login_card_form_group {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-2);
-        }
-
-        .login_card_form_group_label {
-            font-size: 14px;
-            font-weight: var(--font-weight-semibold);
-            color: var(--color-text-main);
-        }
-
-        .login_card_form_group_input_container {
-            position: relative;
-        }
-
-        .login_card_form_group_input {
-            padding: 13px 16px 13px 40px;
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            font-size: 14px;
-            color: var(--color-text-main);
-            background-color: #F0F3FF;
-            width: 100%;
-        }
-
-        .login_card_form_group_input:focus {
-            outline: none;
-            border-width: 2px;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
-        }
-
-        .login_card_form_group_input::placeholder {
-            color: var(--color-text-muted);
-            font-family: Be Vietnam Pro, sans-serif;
-        }
-
-        .login_card_form_group_input_icon {
-            position: absolute;
-            top: 50%;
-            left: 12px;
-            transform: translateY(-50%);
-            color: var(--color-text-muted);
-        }
-
-        .remember-me {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .remember-me_label {
-            display: flex;
-            gap: var(--spacing-2);
-            font-size: 14px;
-            color: var(--color-text-main);
-            font-family: Be Vietnam Pro, sans-serif;
-            font-weight: normal;
-            align-items: center;
-        }
-
-        .login_card_form_group_input[type="checkbox"] {
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            display: inline-block;
-            padding: 0;
-            margin: 0;
-            border-radius: 4px;
-        }
-
-        .login_card_form_group_input[type="checkbox"]:checked {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-        }
-
-        .login_card_form_group_input[type="checkbox"]:checked::after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 2px;
-            width: 4px;
-            height: 9px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
-
-        .login_card_link {
-            font-size: 14px;
-            color: var(--color-primary);
-            font-weight: var(--font-weight-semibold);
-            transition: 0.3s;
-        }
-
-        .login_card_link:hover {
-            color: var(--color-primary-hover);
-        }
-
-        .login_card_form_submit {
-            padding: 13px 16px;
-            background-color: var(--color-primary);
-            color: #fff;
-            border: none;
-            border-radius: 9999px;
-            font-size: 16px;
-            font-weight: var(--font-weight-semibold);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .login_card_form_submit:hover {
-            background-color: var(--color-primary-hover);
-        }
-
-        .login_card_form_group:last-child {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: var(--spacing-2);
-        }
-    </style>
 </head>
 
 <body>
@@ -215,7 +54,7 @@
                     <a href="" class="login_card_link">Forgot Password?</a>
                 </div>
                 <button class="login_card_form_submit" type="submit">Login</button>
-                <div class="login_card_form_group">
+                <div class="login_card_form_group login_card_form_footer">
                     <p class="login_card_text">New to ConnectSphere?</p>
                     <a href="" class="login_card_link">Create an account</a>
                 </div>

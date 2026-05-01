@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectSphere Chat</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+      
+        <header class="top-header">
+            <div class="logo">
+                <i class="fa-solid fa-atom"></i> ConnectSphere
+            </div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search ConnectSphere...">
+            </div>
+            <div class="header-icons">
+                <i class="fa-regular fa-bell"></i>
+                <i class="fa-solid fa-gear"></i>
+                <img src="image/150 (3).jpg" alt="Profile" class="avatar-small">
+            </div>
+        </header>
+
+        <div class="main-content">
+           
+            <aside class="sidebar-left">
+                <div class="brand">
+                    <i class="fa-solid fa-atom"></i>
+                    <div>
+                        <strong>ConnectSphere</strong>
+                        <span>Social Ecosystem</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#"><i class="fa-solid fa-house"></i> Feed</a>
+                    <a href="#"><i class="fa-solid fa-compass"></i> Discover</a>
+                    <a href="#" class="active"><i class="fa-solid fa-message"></i> Messages</a>
+                    <a href="#"><i class="fa-solid fa-users"></i> Circle</a>
+                    <a href="#"><i class="fa-solid fa-user"></i> Profile</a>
+                </nav>
+                <button class="compose-btn">Compose</button>
+            </aside>
+
+         
+            <section class="messages-list">
+                <div class="list-header">
+                    <h2>Messages</h2>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <div class="list-search">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search messages">
+                </div>
+                <div class="chat-items">
+                    <div class="chat-item active">
+                        <img src="image/150.jpg" alt="Alex">
+                        <div class="chat-item-info">
+                            <div class="name-time">
+                                <strong>Alex Rivera</strong>
+                                <span>Just now</span>
+                            </div>
+                            <p>That sounds like a great idea for the wee...</p>
+                        </div>
+                    </div>
+                    <div class="chat-item">
+                        <img src="image/150 (1).jpg" alt="Sarah">
+                        <div class="chat-item-info">
+                            <div class="name-time">
+                                <strong>Sarah Chen</strong>
+                                <span>2h ago</span>
+                            </div>
+                            <p style="color: #111; font-weight: bold;">Did you see the new design specs?</p>
+                        </div>
+                    </div>
+                    <div class="chat-item">
+                        <div class="avatar-text">M</div>
+                        <div class="chat-item-info">
+                            <div class="name-time">
+                                <strong>Marketing Team</strong>
+                                <span>Yesterday</span>
+                            </div>
+                            <p>Marcus: I'll share the updated slide deck ...</p>
+                        </div>
+                    </div>
+                    <div class="chat-item">
+                        <img src="image/150 (2).jpg" alt="David">
+                        <div class="chat-item-info">
+                            <div class="name-time">
+                                <strong>David Kim</strong>
+                                <span>Mon</span>
+                            </div>
+                            <p>Thanks for the update. Talk tomorrow.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+           
+            <section class="chat-window">
+                <div class="chat-header">
+                    <div class="user-info">
+                        <img src="image/150.jpg" alt="Alex">
+                        <div>
+                            <strong>Alex Rivera</strong>
+                            <span>Online</span>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <i class="fa-solid fa-phone"></i>
+                        <i class="fa-solid fa-video"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="date-divider"><span>Today</span></div>
+                    
+                    <div class="message received">
+                        <img src="image/150.jpg" alt="Alex" class="msg-avatar">
+                        <div class="bubble">Hey! Are we still on for the hike this weekend? The weather looks perfect.</div>
+                        <span class="msg-time">10:42 AM</span>
+                    </div>
+
+                    <div class="message sent">
+                        <div class="bubble">Absolutely! I was just looking at trail maps. I'm thinking we do the Ridge loop.</div>
+                        <span class="msg-time">10:45 AM <i class="fa-solid fa-check-double"></i></span>
+                    </div>
+
+                    <div class="message sent">
+                        <div class="bubble">It's about 8 miles and has great views.</div>
+                    </div>
+
+                    <div class="message received">
+                        <img src="image/150.jpg" alt="Alex" class="msg-avatar">
+                        <div class="bubble">That sounds like a great idea for the weekend! Let's finalize the plans later. I'll check if Sarah wants to join too.</div>
+                        <span class="msg-time">Just now</span>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <input type="text" id="messageInput" placeholder="Type a message...">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <button id="sendBtn" class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </section>
+
+           
+            <aside class="sidebar-right">
+                <div class="shared-media">
+                    <h3>Shared Media</h3>
+                    <div class="media-grid">
+                        <img src="image/photo-1464822759023-fed622ff2c3b.jpg" alt="Mountain">
+                        <img src="image/photo-1523987355523-c7b5b0dd90a7.jpg" alt="Tent">
+                        <div class="more-media">+12</div>
+                    </div>
+                </div>
+                <div class="chat-details">
+                    <h3>Chat Details</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-bell-slash"></i> Mute Notifications</li>
+                        <li><i class="fa-solid fa-magnifying-glass"></i> Search in Conversation</li>
+                        <li class="danger"><i class="fa-solid fa-ban"></i> Block User</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

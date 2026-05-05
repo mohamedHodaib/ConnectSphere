@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ConnectSphere Chat</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/designsystem.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/state.css">
 </head>
-<body>
+
+<body class="chat-page">
     <div class="app-container">
-      
+
         <header class="top-header">
             <div class="logo">
                 <i class="fa-solid fa-atom"></i> ConnectSphere
@@ -26,7 +32,7 @@
         </header>
 
         <div class="main-content">
-           
+
             <aside class="sidebar-left">
                 <div class="brand">
                     <i class="fa-solid fa-atom"></i>
@@ -45,7 +51,7 @@
                 <button class="compose-btn">Compose</button>
             </aside>
 
-         
+
             <section class="messages-list">
                 <div class="list-header">
                     <h2>Messages</h2>
@@ -99,7 +105,7 @@
                 </div>
             </section>
 
-           
+
             <section class="chat-window">
                 <div class="chat-header">
                     <div class="user-info">
@@ -115,18 +121,20 @@
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
-                
+
                 <div class="chat-messages" id="chatMessages">
                     <div class="date-divider"><span>Today</span></div>
-                    
+
                     <div class="message received">
                         <img src="image/150.jpg" alt="Alex" class="msg-avatar">
-                        <div class="bubble">Hey! Are we still on for the hike this weekend? The weather looks perfect.</div>
+                        <div class="bubble">Hey! Are we still on for the hike this weekend? The weather looks perfect.
+                        </div>
                         <span class="msg-time">10:42 AM</span>
                     </div>
 
                     <div class="message sent">
-                        <div class="bubble">Absolutely! I was just looking at trail maps. I'm thinking we do the Ridge loop.</div>
+                        <div class="bubble">Absolutely! I was just looking at trail maps. I'm thinking we do the Ridge
+                            loop.</div>
                         <span class="msg-time">10:45 AM <i class="fa-solid fa-check-double"></i></span>
                     </div>
 
@@ -136,7 +144,8 @@
 
                     <div class="message received">
                         <img src="image/150.jpg" alt="Alex" class="msg-avatar">
-                        <div class="bubble">That sounds like a great idea for the weekend! Let's finalize the plans later. I'll check if Sarah wants to join too.</div>
+                        <div class="bubble">That sounds like a great idea for the weekend! Let's finalize the plans
+                            later. I'll check if Sarah wants to join too.</div>
                         <span class="msg-time">Just now</span>
                     </div>
                 </div>
@@ -149,7 +158,7 @@
                 </div>
             </section>
 
-           
+
             <aside class="sidebar-right">
                 <div class="shared-media">
                     <h3>Shared Media</h3>
@@ -170,6 +179,7 @@
             </aside>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="js/Messaging.js"></script>
 </body>
+
 </html>

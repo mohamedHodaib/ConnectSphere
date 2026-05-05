@@ -1,5 +1,4 @@
-
-/* Login page */
+/* Login Page */
 
 .login_card_form_group_input:focus {
     outline: none;
@@ -26,8 +25,6 @@
     border-width: 2px;
 }
 
-
-
 .login_card_form_group_error,
 .login_card_form_error {
     color: #ef4444;
@@ -45,4 +42,26 @@
 .login_card_form_submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+/* Chat Page */
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background: #f4f3ff;
+    color: var(--color-primary);
+}
+
+.nav-menu a.active {
+    border-left: 4px solid var(--color-primary);
+}
+
+.chat-item:hover,
+.chat-item.active {
+    background: #f9f9fc;
+}
+
+.chat-item.active .name-time span {
+    color: var(--color-primary);
+    font-weight: bold;
 }

@@ -20,3 +20,29 @@
     background-color: var(--color-primary);
     border-color: var(--color-primary);
 }
+
+.login_card_form_group_input_container.error .login_card_form_group_input {
+    border-color: #ef4444;
+    border-width: 2px;
+}
+
+
+
+.login_card_form_group_error,
+.login_card_form_error {
+    color: #ef4444;
+    font-size: 12px;
+    font-family: Be Vietnam Pro, sans-serif;
+    margin-top: 4px;
+    display: none;
+}
+
+.login_card_form_group_input_container.error + .login_card_form_group_error,
+.login_card_form_error.visible {
+    display: block;
+}
+
+.login_card_form_submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

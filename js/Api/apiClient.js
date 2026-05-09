@@ -41,6 +41,7 @@ export async function apiClient(endpoint, {
         }
 
         if (!response.ok) {
+            console.log(data);
             throw new ApiError(
                 data?.detail || "Request failed",
                 response.status,

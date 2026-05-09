@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- icon link -->
     <link rel="icon" href="assets/icon.png" type="image/png">
-    <title>Login</title>
+    <title>ConnectSphere - security</title>
     <!-- Google Fonts CDN -->
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500&amp;display=swap"
@@ -26,42 +26,42 @@
 
 <body>
     <div class="container">
-        <div class="login_card">
-            <div class="login_card_heading">
-                <h1 class="login_card_heading_header">ConnectSphere</h1>
-                <p class="login_card_text">Login to continue your network</p>
+        <div class="security_card security_card">
+            <div class="security_card_heading">
+                <h1 class="security_card_heading_header">ConnectSphere</h1>
+                <p class="security_card_heading_text">Login to continue your network</p>
             </div>
-            <form class="login_card_form" action="/login" method="POST">
-                <div class="login_card_form_group">
-                    <label class="login_card_form_group_label" for="email">Email Address</label>
-                    <div class="login_card_form_group_input_container">
-                        <i class="login_card_form_group_input_icon fa-regular fa-envelope"></i>
-                        <input class="login_card_form_group_input" type="text" id="email" name="email"
+            <form class="security_card_form" action="/security" method="POST">
+                <div class="security_card_form_group">
+                    <label class="security_card_form_group_label" for="email">Email Address</label>
+                    <div class="security_card_form_group_input_container">
+                        <i class=" security_card_form_group_input_icon fa-regular fa-envelope"></i>
+                        <input class="security_card_form_group_input" type="text" id="email" name="email"
                             placeholder="name@example.com">
                     </div>
-                    <span class="login_card_form_group_error">This field is required</span>
+                    <span class="security_card_form_group_error">This field is required</span>
                 </div>
-                <div class="login_card_form_group">
-                    <label class="login_card_form_group_label" for="password">Password</label>
-                    <div class="login_card_form_group_input_container">
-                        <i class="login_card_form_group_input_icon fa-solid fa-lock"></i>
-                        <input class="login_card_form_group_input" type="password" id="password" placeholder="••••••••"
-                            name="password">
+                <div class="security_card_form_group">
+                    <label class="security_card_form_group_label" for="password">Password</label>
+                    <div class="security_card_form_group_input_container">
+                        <i class="security_card_form_group_input_icon fa-solid fa-lock"></i>
+                        <input class="security_card_form_group_input" type="password" id="password"
+                            placeholder="••••••••" name="password">
                     </div>
-                    <span class="login_card_form_group_error">This field is required</span>
+                    <span class="security_card_form_group_error">This field is required</span>
                 </div>
-                <span class="login_card_form_error"></span>
-                <div class="login_card_form_group remember-me">
-                    <label class="login_card_form_group_label cursor-pointer remember-me_label">
-                        <input class="login_card_form_group_input cursor-pointer" type="checkbox" id="remember-me">
+                <span class="security_card_form_error"></span>
+                <div class="security_card_form_group remember-me">
+                    <label class="security_card_form_group_label cursor-pointer remember-me_label">
+                        <input class="security_card_form_group_input cursor-pointer" type="checkbox" id="remember-me">
                         Remember me
                     </label>
-                    <a href="" class="login_card_link">Forgot Password?</a>
+                    <a href="" class="security_card_link">Forgot Password?</a>
                 </div>
-                <button class="login_card_form_submit" type="submit">Login</button>
-                <div class="login_card_form_group login_card_form_footer">
-                    <p class="login_card_text">New to ConnectSphere?</p>
-                    <a href="" class="login_card_link">Create an account</a>
+                <button class="security_card_form_submit" type="submit">Login</button>
+                <div class="security_card_form_group security_card_form_footer">
+                    <p class="security_card_text">New to ConnectSphere?</p>
+                    <a href="create-account.html" class="security_card_link">Create an account</a>
                 </div>
             </form>
         </div>

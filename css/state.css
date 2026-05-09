@@ -1,32 +1,32 @@
-/* Login Page */
 
-.login_card_form_group_input:focus {
+.security_card_form_group_input:focus {
     outline: none;
     border-width: 2px;
     border-color: var(--color-primary);
     box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
 }
 
-.login_card_link:hover {
-    color: var(--color-primary-hover);
-}
-
-.login_card_form_submit:hover {
+.security_card_form_submit:hover {
     background-color: var(--color-primary-hover);
 }
 
-.login_card_form_group_input[type="checkbox"]:checked {
+.security_card_link:hover {
+    color: var(--color-primary-hover);
+}
+
+
+.security_card_form_group_input[type="checkbox"]:checked {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
 }
 
-.login_card_form_group_input_container.error .login_card_form_group_input {
+.security_card_form_group_input_container.error .security_card_form_group_input {
     border-color: #ef4444;
     border-width: 2px;
 }
 
-.login_card_form_group_error,
-.login_card_form_error {
+.security_card_form_group_error,
+.security_card_form_error {
     color: #ef4444;
     font-size: 12px;
     font-family: Be Vietnam Pro, sans-serif;
@@ -34,12 +34,12 @@
     display: none;
 }
 
-.login_card_form_group_input_container.error + .login_card_form_group_error,
-.login_card_form_error.visible {
+.security_card_form_group_input_container.error + .security_card_form_group_error,
+.security_card_form_error.visible {
     display: block;
 }
 
-.login_card_form_submit:disabled {
+.security_card_form_submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }

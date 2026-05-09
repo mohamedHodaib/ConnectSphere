@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- icon link -->
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    <title>ConnectSphere - Create Account</title>
+    <!-- Google Fonts CDN -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- style files -->
+    <link rel="stylesheet" href="css/designsystem.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/state.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="create-account_card security_card">
+            <div class="security_card_heading">
+                <div class="icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h2 class="Create-account_card_heading_header">Create an account</h1>
+                    <p class="security_card_heading_text">Join ConnectSphere today and start connecting</p>
+            </div>
+            <form class="security_card_form" action="/security" method="POST">
+                <div class="security_card_form_group">
+                    <label class="security_card_form_group_label" for="username">Username</label>
+                    <div class="security_card_form_group_input_container">
+                        <i class="security_card_form_group_input_icon fa-regular fa-user"></i>
+                        <input class="security_card_form_group_input create-account_card_form_group_input" type="text"
+                            id="username" name="username" placeholder="JohnDoe">
+                    </div>
+                    <span class="security_card_form_group_error">This field is required</span>
+                </div>
+                <div class="security_card_form_group">
+                    <label class="security_card_form_group_label" for="email">Email Address</label>
+                    <div class="security_card_form_group_input_container">
+                        <i class="security_card_form_group_input_icon fa-regular fa-envelope"></i>
+                        <input class="security_card_form_group_input create-account_card_form_group_input" type="text"
+                            id="email" name="email" placeholder="name@example.com">
+                    </div>
+                    <span class="security_card_form_group_error">This field is required</span>
+                </div>
+                <div class="security_card_form_group">
+                    <label class="security_card_form_group_label" for="password">Password</label>
+                    <div class="security_card_form_group_input_container">
+                        <i class="security_card_form_group_input_icon fa-solid fa-lock"></i>
+                        <input class="security_card_form_group_input create-account_card_form_group_input"
+                            type="password" id="password" placeholder="••••••••" name="password">
+                    </div>
+                    <span class="security_card_form_group_error">This field is required</span>
+                </div>
+                <div class="security_card_form_group">
+                    <label class="security_card_form_group_label" for="confirm-password">Confirm Password</label>
+                    <div class="security_card_form_group_input_container">
+                        <i class="security_card_form_group_input_icon fa-solid fa-rotate-right"></i>
+                        <input class="security_card_form_group_input create-account_card_form_group_input"
+                            type="password" id="confirm-password" placeholder="••••••••" name="confirm-password">
+                    </div>
+                    <span class="security_card_form_group_error">This field is required</span>
+                </div>
+                <span class="security_card_form_error"></span>
+                <button class="security_card_form_submit" type="submit">
+                    Create Account
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+                <div class="security_card_form_group security_card_form_footer">
+                    <p class="security_card_text">Already have an account?</p>
+                    <a href="index.html" class="security_card_link">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="js/create-account.js"></script>
+</body>
+
+</html>

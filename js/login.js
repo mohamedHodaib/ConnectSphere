@@ -4,23 +4,27 @@ import { login } from "./Api/userApi.js";
 //select elements
 const emailField = document.querySelector("#email");
 const passwordField = document.querySelector("#password");
-const loginForm = document.querySelector(".login_card_form");
-const formError = document.querySelector(".login_card_form_error");
-const submitBtn = document.querySelector(".login_card_form_submit");
+const securityForm = document.querySelector(".security_card_form");
+const formError = document.querySelector(".security_card_form_error");
+const submitBtn = document.querySelector(".security_card_form_submit");
 const rememberMe = document.querySelector("#remember-me");
 
 document.addEventListener("DOMContentLoaded", () => {
-    const savedEmail = localStorage.getItem("rememberedEmail");
+    const savedEmail = localStorage.getItem("rememberedEmail") || sessionStorage.getItem("rememberedEmail");
     const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
     if (savedEmail) {
         emailField.value = savedEmail;
+
+        //Remove it from sessionStorage if it exists there, since we want to use localStorage for remembered emails
+        sessionStorage.removeItem("rememberedEmail");
+
         rememberMe.checked = true;
     }
 
     if (token) {
         // redirect user to home page
-        window.location.href = "../home.html";
+        redirectToHome();
         return;
     }
 
@@ -28,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function validateField(input) {
-    const container = input.closest(".login_card_form_group_input_container");
+    const container = input.closest(".security_card_form_group_input_container");
     if (input.value.trim() === "") {
         container.classList.add("error");
         return false;
@@ -38,10 +42,14 @@ function validateField(input) {
     }
 }
 
+function redirectToHome() {
+    window.location.href = "home.html";
+}
+
 emailField.addEventListener("input", () => validateField(emailField));
 passwordField.addEventListener("input", () => validateField(passwordField));
 
-loginForm.addEventListener("submit", async (e) => {
+securityForm.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
@@ -64,7 +72,7 @@ loginForm.addEventListener("submit", async (e) => {
             );
 
             //Get token
-            const token = res.token;
+            const token = res.accessToken;
             const refreshToken = res.refreshToken;
 
             if (rememberMe.checked) {
@@ -81,6 +89,9 @@ loginForm.addEventListener("submit", async (e) => {
                 // remove any old persistent tokens
                 localStorage.removeItem("token");
                 localStorage.removeItem("refreshToken");
+
+                // redirect user to home page
+                redirectToHome();
             }
         } catch (err) {
             if (err.status === 401) {
@@ -90,7 +101,7 @@ loginForm.addEventListener("submit", async (e) => {
             } else if (err.status >= 500) {
                 formError.textContent = "Something went wrong on our end. Please try later.";
             } else {
-                formError.textContent = err.data?.detail || "Login failed. Please try again.";
+                formError.textContent = err.message || "security failed. Please try again.";
             }
             formError.classList.add("visible");
         } finally {

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    <title>ConnectSphere - Confirm Email</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/designsystem.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/state.css">
+</head>
+
+<body class="confirm-email-page">
+    <div class="container">
+        <div class="security_card">
+            <div class="security_card_heading">
+                <h1 class="security_card_heading_header">ConnectSphere</h1>
+            </div>
+            <div id="loading" class="confirm-status">
+                <div class="confirm-status_icon loading">
+                    <i class="fa-solid fa-spinner"></i>
+                </div>
+                <h2 class="confirm-status_title">Verifying your email...</h2>
+                <p class="confirm-status_message">Please wait while we confirm your email address.</p>
+            </div>
+            <div id="success" class="confirm-status" style="display: none;">
+                <div class="confirm-status_icon success">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h2 class="confirm-status_title">Email Confirmed!</h2>
+                <p class="confirm-status_message">Your email has been verified successfully. You can now log in to your
+                    account.</p>
+                <a href="index.html" class="security_card_form_submit">Go to Login</a>
+            </div>
+            <div id="error" class="confirm-status" style="display: none;">
+                <div class="confirm-status_icon error">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <h2 class="confirm-status_title">Verification Failed</h2>
+                <p id="error-message" class="confirm-status_message">The confirmation link is invalid or has expired.
+                </p>
+                <a href="index.html" class="security_card_form_submit">Go to Login</a>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/confirm-email.js"></script>
+</body>
+
+</html>

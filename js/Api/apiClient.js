@@ -13,20 +13,34 @@ export async function apiClient(endpoint, {
     body,
     headers = {},
     timeout = 8000,
+    auth = false,
+    formData = false,
 } = {}) {
 
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
 
+    const requestHeaders = {
+        ...headers
+    };
+
+    if (!formData) {
+        requestHeaders['Content-Type'] = 'application/json';
+    }
+
+    if (auth) {
+        const token = localStorage.getItem('token');
+        if (token) {
+            requestHeaders['Authorization'] = `Bearer ${token}`;
+        }
+    }
+
     try {
         //call Api
         const response = await fetch(`${API_BASE}${endpoint}`, {
             method,
-            headers: {
-                'Content-Type': 'application/json',
-                ...headers
-            },
-            body: body ? JSON.stringify(body) : undefined,
+            headers: requestHeaders,
+            body: body ? (formData ? body : JSON.stringify(body)) : undefined,
             signal: controller.signal
         });
 

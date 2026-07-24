@@ -1,6 +1,6 @@
 import { resetPassword } from "./Api/userApi.js";
 import { validatePassword, validateConfirmPassword } from "./validation.js";
-import { showBanner } from "./banner.js";
+import { showBanner } from "./util/show.js";
 
 const passwordField = document.querySelector("#password");
 const confirmPasswordField = document.querySelector("#confirm-password");

@@ -1,8 +1,8 @@
 import { getUserProfile } from './Api/userApi.js';
 import { CreatePost, GetPosts } from './Api/postApi.js';
-import { showBanner, hideBanner } from './banner.js';
 import { getFollowSuggestions } from './Api/userApi.js';
-import { followUser } from './Api/userApi.js';
+import { followUser, unfollowUser } from './Api/userApi.js';
+import { showEmptyFeedState, hideEmptyFeedState, showBanner, hideBanner } from './util/show.js'
 
 let selectedImages = [];
 let feedPage = 1;
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         composeAvatar.alt = userProfile.userName;
 
         // Handle feed loading
-        handleFeedLoading();
+        await handleFeedLoading();
 
         // Handle image selection
         handleImageSelection();
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
         //Handle follow suggestions
-        handleFollowSuggestions();
+        await handleFollowSuggestions();
 
 
         //handle follow button click
@@ -99,30 +99,6 @@ window.addEventListener('scroll', () => {
         loadFeed();
     }
 });
-
-function showEmptyFeedState() {
-    if (!feedPostsList) return;
-    hideEmptyFeedState();
-
-    const emptyState = document.createElement('div');
-    emptyState.className = 'feed-empty-state';
-    emptyState.innerHTML = `
-        <span class="material-symbols-outlined">dynamic_feed</span>
-        <h3>No posts yet</h3>
-        <p>Your feed is empty right now. Start the conversation by creating the first post.</p>
-    `;
-
-    feedPostsList.appendChild(emptyState);
-}
-
-function hideEmptyFeedState() {
-    if (!feedPostsList) return;
-
-    const emptyState = feedPostsList.querySelector('.feed-empty-state');
-    if (emptyState) {
-        emptyState.remove();
-    }
-}
 
 // Extract tags from post content
 function extractTags(content) {
@@ -346,9 +322,9 @@ loadFeed = async function (reset = false) {
             const posts = Array.isArray(data) ? data : data.items || [];
 
             if (!posts.length) {
-                showEmptyFeedState();
+                showEmptyFeedState(feedPostsList);
             } else {
-                hideEmptyFeedState();
+                hideEmptyFeedState(feedPostsList);
                 posts.forEach((post) => {
                     CreatePostFeedItem(
                         post.content || '',
@@ -402,7 +378,7 @@ function handlePostSubmission() {
                 const contentText = content.replace(/#[\w]+/g, '');
                 const imagesURLs = response.imagesURls || response.imagesUrls || [];
 
-                hideEmptyFeedState();
+                hideEmptyFeedState(feedPostsList);
                 CreatePostFeedItem(contentText, tags, response.postId || response.id, userProfile, imagesURLs, response.createdAt || null);
 
                 postContent.value = '';
@@ -422,27 +398,37 @@ function handlePostSubmission() {
 }
 
 //Handle follow button click
+async function handleFollowClick(button) {
+    const userId = button.dataset.userId;
+    const isFollowing = button.dataset.following === "true";
+
+    try {
+        if (isFollowing) {
+            await unfollowUser(userId);
+            button.textContent = "Follow";
+            button.dataset.following = "false";
+        } else {
+            await followUser(userId);
+            button.textContent = "Following";
+            button.dataset.following = "true";
+        }
+    } catch (error) {
+        // Handle errors
+        if (error.status === 409) {
+            showBanner('You are already following this user.', 'warning');
+        }
+        else if (error.status === 404) {
+            showBanner('User not found. Please refresh the suggestions.', 'warning');
+        }
+        else {
+            throw error;
+        }
+    }
+}
+
 function handleFollowButtonClick() {
-    const followButtons = document.querySelectorAll('.follow-user-btn');
-    followButtons.forEach((button) => {
-        button.addEventListener('click', async function () {
-            const userId = this.getAttribute('data-user-id');
-            try {
-                await followUser(userId);
-                this.textContent = 'Following';
-                this.disabled = true;
-            } catch (error) {
-                if (error.status === 409) {
-                    showBanner('You are already following this user.', 'warning');
-                }
-                else if (error.status === 404) {
-                    showBanner('User not found. Please refresh the suggestions.', 'warning');
-                }
-                else {
-                    throw error;
-                }
-            }
-        });
+    document.querySelectorAll(".follow-user-btn").forEach(button => {
+        button.addEventListener("click", () => handleFollowClick(button));
     });
 }
 

@@ -63,8 +63,14 @@ function validateField(input) {
     }
 }
 
-function redirectToHome() {
-    window.location.replace("/index.html");
+function redirectToLatestPage() {
+    const redirectTo = sessionStorage.getItem("redirectTo");
+    if (redirectTo) {
+        window.location.replace(redirectTo);
+        sessionStorage.removeItem("redirectTo");
+    } else {
+        window.location.replace("/index.html");
+    }
 }
 
 emailField.addEventListener("input", () => validateField(emailField));
@@ -113,8 +119,8 @@ securityForm.addEventListener("submit", async (e) => {
 
             }
             
-            // redirect user to home page
-            redirectToHome();
+            //how to redirect user to the page they were trying to access before login
+            redirectToLatestPage();
         } catch (err) {
             if (err.status === 401) {
                 const detail = (err.data?.detail || err.message || "").toLowerCase();

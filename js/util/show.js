@@ -1,3 +1,29 @@
+
+
+export function showEmptyFeedState(feedList) {
+    if (!feedList) return;
+    hideEmptyFeedState(feedList);
+
+    const emptyState = document.createElement('div');
+    emptyState.className = 'feed-empty-state';
+    emptyState.innerHTML = `
+        <span class="material-symbols-outlined">dynamic_feed</span>
+        <h3>No posts yet</h3>
+        <p>Your feed is empty right now. Start the conversation by creating the first post.</p>
+    `;
+
+    feedList.appendChild(emptyState);
+}
+
+export function hideEmptyFeedState(feedList) {
+    if (!feedList) return;
+
+    const emptyState = feedList.querySelector('.feed-empty-state');
+    if (emptyState) {
+        emptyState.remove();
+    }
+}
+
 //select elements 
 const banner = document.getElementById("banner");
 const bannerIcon = document.getElementById("banner-icon");

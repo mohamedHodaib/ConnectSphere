@@ -46,3 +46,5 @@ export const getUserProfile = () => apiClient('/profile/me',{auth: true});
 export const getFollowSuggestions = (page = 1, pageSize = 5) => apiClient(`/Recommendations?page=${page}&pageSize=${pageSize}`, { auth: true });
 
 export const followUser = (userId) => apiClient(`/users/${userId}/follow`, { method: 'POST', auth: true });
+
+export const unfollowUser = (userId) => apiClient(`/users/${userId}/unfollow`, { method: 'POST', auth: true });

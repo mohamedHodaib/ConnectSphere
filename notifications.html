@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    <title>ConnectSphere - Notifications</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/designsystem.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/state.css">
+</head>
+
+<script src="js/notifications.js" type="module" defer></script>
+<script type="module" src="js/util/show.js" defer></script>
+
+<body class="home-page">
+    <div class="home-container">
+        <nav class="top-nav">
+            <div class="top-nav-logo">
+                <h1 class="top-nav-logo-text">ConnectSphere</h1>
+            </div>
+            <div class="top-nav-search">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" class="top-nav-search-input" placeholder="Search ConnectSphere">
+            </div>
+            <div class="top-nav-actions">
+                <button class="top-nav-icon-btn" aria-label="Messages">
+                    <span class="material-symbols-outlined">mail</span>
+                </button>
+                <button class="top-nav-icon-btn" aria-label="Notifications">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="top-nav-icon-btn" aria-label="Profile">
+                    <span class="material-symbols-outlined">account_circle</span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="main-feed-container">
+            <aside class="sidebar-left">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-nav-item">
+                        <span class="material-symbols-outlined">home</span>
+                        <span>Home</span>
+                    </a>
+                    <a href="index.html" class="sidebar-nav-item">
+                        <span class="material-symbols-outlined">explore</span>
+                        <span>Explore</span>
+                    </a>
+                    <a href="messaging.html" class="sidebar-nav-item">
+                        <span class="material-symbols-outlined">mail</span>
+                        <span>Messages</span>
+                    </a>
+                    <a href="notifications.html" class="sidebar-nav-item active">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span>Notifications</span>
+                    </a>
+                    <a href="index.html" class="sidebar-nav-item">
+                        <span class="material-symbols-outlined">bookmark</span>
+                        <span>Bookmarks</span>
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <a href="index.html" class="sidebar-nav-item">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </aside>
+
+            <main class="feed-center">
+                <div class="feed-header">
+                    <h2>Notifications</h2>
+                    <a href="#" class="text-link">Mark all as read</a>
+                </div>
+
+                <div class="notifications-container">
+                    <div id="banner" class="security_card_banner">
+                        <i id="banner-icon" class="fa-solid fa-envelope"></i>
+                        <span id="banner-text"></span>
+                    </div>
+                    <section class="notification-card notification-card-accent">
+                        <div class="notification-card-top">
+                            <div class="notification-avatar-wrap">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=90&q=80"
+                                    alt="Alex Rivera" class="notification-avatar">
+                                <div>
+                                    <div class="notification-title-row">
+                                        <span class="notification-title">Alex Rivera liked your post</span>
+                                        <small>2m ago</small>
+                                    </div>
+                                    <div class="notification-snippet">
+                                        “Just finished the new design system update. Feeling really good about the
+                                        component
+                                        architecture!”
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="notification-card">
+                        <div class="notification-card-top notification-card-top-space">
+                            <div class="notification-avatar-wrap">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=90&q=80"
+                                    alt="Sarah Jenkins" class="notification-avatar">
+                                <div>
+                                    <div class="notification-title-row">
+                                        <span class="notification-title">Sarah Jenkins commented on your photo</span>
+                                        <small>1h ago</small>
+                                    </div>
+                                    <div class="notification-snippet">
+                                        <strong>@sarahj:</strong> “The lighting in this shot is absolutely incredible!
+                                        What
+                                        camera did you use?”
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-compact-badge">
+                                <span class="notification-icon-badge">
+                                    <span class="material-symbols-outlined">sparkles</span>
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="notification-card">
+                        <div class="notification-card-top notification-card-top-space">
+                            <div class="notification-avatar-wrap">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=90&q=80"
+                                    alt="David Kim" class="notification-avatar">
+                                <div>
+                                    <div class="notification-title-row">
+                                        <span class="notification-title">David Kim started following you</span>
+                                        <small>3h ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="notification-btn follow-btn">Follow Back</button>
+                        </div>
+                    </section>
+                </div>
+            </main>
+
+            <aside class="sidebar-right">
+                <div class="insights-card">
+                    <h3>Insights</h3>
+                    <ul class="insights-list">
+                        <li>
+                            <span class="insights-icon">
+                                <span class="material-symbols-outlined">trending_up</span>
+                            </span>
+                            <div>
+                                <strong>Trending</strong>
+                                <small>What’s happening</small>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="insights-icon">
+                                <span class="material-symbols-outlined">person_add</span>
+                            </span>
+                            <div>
+                                <strong>Who to follow</strong>
+                                <small>Suggested for you</small>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="insights-icon">
+                                <span class="material-symbols-outlined">tag</span>
+                            </span>
+                            <div>
+                                <strong>Topics</strong>
+                                <small>Explore interests</small>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="insights-footer">
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Cookie Policy</a>
+                        <a href="#">Accessibility</a>
+                    </div>
+                    <p class="insights-copy">© 2024 ConnectSphere</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>
+
+</html>

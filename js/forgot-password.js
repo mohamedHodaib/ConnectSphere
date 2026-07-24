@@ -1,6 +1,6 @@
 import { forgotPassword } from "./Api/userApi.js";
 import { validateEmail } from "./validation.js";
-import { showBanner } from "./banner.js";
+import { showBanner } from "./util/show.js";
 
 const emailField = document.querySelector("#email");
 const securityForm = document.querySelector(".security_card_form");

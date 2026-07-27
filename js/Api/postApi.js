@@ -32,3 +32,12 @@ export const CreatePost = (content, tags = [], images = []) => {
 
 export const GetPosts = (page = 1, pageSize = 10) =>
     apiClient(`/Feed?page=${page}&pageSize=${pageSize}`, { auth: true });
+
+export const GetPost = (postId) =>
+    apiClient(`/Posts/${postId}`, { auth: true });
+
+export const GetBookmarks = (page = 1, pageSize = 10) =>
+    apiClient(`/Bookmarks?page=${page}&pageSize=${pageSize}`, { auth: true });
+
+export const DeleteBookmark = (postId) =>
+    apiClient(`/Bookmarks/${postId}`, { auth: true, method: 'DELETE' });

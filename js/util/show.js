@@ -1,24 +1,23 @@
 
 
-export function showEmptyFeedState(feedList) {
-    if (!feedList) return;
-    hideEmptyFeedState(feedList);
+export function showEmptyFeedState(contentList) {
+    if (!contentList) return;
+    hideEmptyFeedState(contentList);
 
     const emptyState = document.createElement('div');
-    emptyState.className = 'feed-empty-state';
+    emptyState.className = 'empty-state';
     emptyState.innerHTML = `
         <span class="material-symbols-outlined">dynamic_feed</span>
-        <h3>No posts yet</h3>
-        <p>Your feed is empty right now. Start the conversation by creating the first post.</p>
+        <h3>No content yet</h3>
     `;
 
-    feedList.appendChild(emptyState);
+    contentList.appendChild(emptyState);
 }
 
-export function hideEmptyFeedState(feedList) {
-    if (!feedList) return;
+export function hideEmptyFeedState(contentList) {
+    if (!contentList) return;
 
-    const emptyState = feedList.querySelector('.feed-empty-state');
+    const emptyState = contentList.querySelector('.empty-state');
     if (emptyState) {
         emptyState.remove();
     }

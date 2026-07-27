@@ -828,7 +828,7 @@
     margin-top: 16px;
 }
 
-.feed-empty-state {
+.empty-state {
     background-color: var(--color-surface);
     border: 1px dashed var(--color-border);
     border-radius: 16px;
@@ -842,18 +842,18 @@
     margin: 10px;
 }
 
-.feed-empty-state .material-symbols-outlined {
+.empty-state .material-symbols-outlined {
     font-size: 36px;
     color: var(--color-primary);
 }
 
-.feed-empty-state h3 {
+.empty-state h3 {
     margin: 0;
     font-size: 18px;
     color: var(--color-text-main);
 }
 
-.feed-empty-state p {
+.empty-state p {
     margin: 0;
     font-size: 14px;
     line-height: 1.5;
@@ -1041,6 +1041,75 @@
     .feed-center {
         border-right: none;
     }
+
+    .bookmark-card {
+        padding: 18px;
+    }
+
+    .bookmark-card-top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bookmark-card-title-row,
+    .bookmark-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bookmark-btn {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .top-nav {
+        flex-wrap: wrap;
+        gap: 12px;
+        height: auto;
+        padding: 16px;
+    }
+
+    .top-nav-search {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .top-nav-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .feed-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 0 16px 16px;
+    }
+
+    .bookmark-card {
+        border-radius: 20px;
+        padding: 16px;
+    }
+
+    .bookmark-card-tags {
+        gap: 8px;
+    }
+
+    .bookmark-card-top {
+        gap: 12px;
+    }
+
+    .bookmark-card-title {
+        font-size: 1rem;
+    }
+
+    .bookmark-card-meta,
+    .bookmark-card-description,
+    .bookmark-card-source {
+        font-size: 0.95rem;
+    }
 }
 
 .feed-item {
@@ -1154,6 +1223,38 @@
     gap: 8px;
     color: var(--color-text-muted);
     flex: 1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.feed-item-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.feed-item-tags .tag {
+    background-color: var(--color-background-secondary);
+    border-radius: 9999px;
+    padding: 6px 10px;
+    font-size: 13px;
+    color: var(--color-text-main);
+}
+
+.feed-item-images {
+    display: grid;
+    gap: 12px;
+    margin-left: 60px;
+}
+
+.feed-item-images img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
     justify-content: center;
     padding: 8px 0;
     transition: color 0.2s;
@@ -1232,20 +1333,166 @@
     transition: background-color 0.2s;
 }
 
-.follow-user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    object-fit: cover;
+.post-container {
+    width: 100%;
+    max-width: 760px;
+    margin: 24px auto;
+    padding: 0 16px;
 }
 
-.follow-user-info {
-    flex: 1;
+.post-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+    padding: 28px;
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    overflow: hidden;
+    gap: 20px;
+}
+
+.post-hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.post-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.post-hero-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.post-author-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-author-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-main);
+}
+
+.post-author-handle,
+.post-time,
+.post-source {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.post-meta {
+    margin-top: 6px;
+}
+
+.post-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+}
+
+.post-title {
+    margin: 0;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    color: var(--color-text-main);
+}
+
+.post-content p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.post-images {
+    margin-top: 10px;
+}
+
+.post-images img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    display: block;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 9999px;
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.post-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 4px;
+    border-top: 1px solid var(--color-border);
+}
+
+.post-reactions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.reaction-btn {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-secondary);
+    padding: 10px 14px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-weight: var(--font-weight-semibold);
+}
+
+.post-links .text-link {
+    color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+    .post-card {
+        padding: 22px;
+    }
+
+    .post-hero {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .post-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
 
 .follow-user-name {
@@ -1323,4 +1570,131 @@
 
 .retry-btn:hover {
     background-color: var(--color-primary-hover);
+}
+
+/* Bookmarks Page */
+
+.bookmarks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0 24px;
+}
+
+.bookmark-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-sm);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 0 16px;
+}
+
+.bookmark-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.bookmark-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.bookmark-card-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bookmark-card-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.bookmark-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+.bookmark-card-meta {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.bookmark-btn {
+    padding: 10px 18px;
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-main);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.bookmark-btn:hover {
+    background-color: var(--color-surface-container-low);
+}
+
+.bookmark-card-description {
+    font-size: 0.98rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.bookmark-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.bookmark-card-tags span {
+    background-color: var(--color-surface-container-low);
+    color: var(--color-text-main);
+    border-radius: 9999px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.bookmark-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.bookmark-card-source {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+    .bookmark-card-top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bookmark-card-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bookmark-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

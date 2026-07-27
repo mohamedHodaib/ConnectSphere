@@ -4,32 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- icon link -->
     <link rel="icon" href="assets/icon.png" type="image/png">
-    <title>ConnectSphere - Home</title>
-    <!-- Google Fonts CDN -->
+    <title>ConnectSphere - Post</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500&amp;display=swap"
         rel="stylesheet" />
-
-    <!-- Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
-
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- style files -->
     <link rel="stylesheet" href="css/designsystem.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/module.css">
     <link rel="stylesheet" href="css/state.css">
-
 </head>
 
 <body class="home-page">
     <div class="home-container">
-        <!-- Top Navigation -->
         <nav class="top-nav">
             <div class="top-nav-logo">
                 <h1 class="top-nav-logo-text">ConnectSphere</h1>
@@ -39,25 +29,23 @@
                 <input type="text" class="top-nav-search-input" placeholder="Search ConnectSphere">
             </div>
             <div class="top-nav-actions">
-                <button class="top-nav-icon-btn">
+                <button class="top-nav-icon-btn" aria-label="Messages">
                     <span class="material-symbols-outlined">mail</span>
                 </button>
-                <button class="top-nav-icon-btn">
+                <button class="top-nav-icon-btn" aria-label="Notifications">
                     <span class="material-symbols-outlined">notifications</span>
                     <span class="notification-badge">3</span>
                 </button>
-                <button class="top-nav-icon-btn">
+                <button class="top-nav-icon-btn" aria-label="Profile">
                     <span class="material-symbols-outlined">account_circle</span>
                 </button>
             </div>
         </nav>
 
-        <!-- Main Content Area -->
         <div class="main-feed-container">
-            <!-- Left Sidebar -->
             <aside class="sidebar-left">
                 <nav class="sidebar-nav">
-                    <a href="index.html" class="sidebar-nav-item active">
+                    <a href="index.html" class="sidebar-nav-item">
                         <span class="material-symbols-outlined">home</span>
                         <span>Home</span>
                     </a>
@@ -87,82 +75,56 @@
                 </div>
             </aside>
 
-            <!-- Center Feed -->
             <main class="feed-center">
-                <div id="banner" class="security_card_banner">
-                    <i id="banner-icon" class="fa-solid fa-envelope"></i>
-                    <span id="banner-text"></span>
-                </div>
-                <!-- Compose Tweet -->
-                <div class="compose-card">
-                    <div class="compose-header">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=CurrentUser" alt="Your avatar"
-                            class="compose-avatar">
-                        <div class="compose-content">
-                            <textarea class="compose-textarea" placeholder="What's happening?"></textarea>
-                            <input type="file" id="imageUpload" accept="image/*" hidden multiple>
-                            <div class="compose-image-preview"></div>
-                            <div class="compose-toolbar">
-                                <div class="compose-icons">
-                                    <button class="compose-icon-btn">
-                                        <span class="material-symbols-outlined">image</span>
-                                    </button>
-                                    <button class="compose-icon-btn emoji-picker-btn">
-                                        <span class="material-symbols-outlined">emoji_objects</span>
-                                    </button>
+                <div class="post-container">
+                    <article class="feed-item post-card">
+                        <div class="feed-item-header post-hero">
+                            <img class="feed-item-avatar post-avatar" src="assets/default-avatar.png" alt="Author">
+                            <div class="feed-item-meta post-hero-info">
+                                <div class="feed-item-user post-author-row">
+                                    <span class="feed-item-name post-author-name">Loading author</span>
+                                    <span class="feed-item-handle post-author-handle">@loading</span>
                                 </div>
-                                <button class="compose-post-btn">Post</button>
+                                <span class="feed-item-time post-time">• ...</span>
                             </div>
-                            <div class="emoji-picker-overlay hidden">
-                                <div class="emoji-picker-container">
-                                    <div class="emoji-grid">
-                                    </div>
-                                    <button class="emoji-picker-close">×</button>
-                                </div>
-                            </div>
+                            <button class="feed-item-menu" type="button">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
                         </div>
-                    </div>
+
+                        <div class="feed-item-content post-content">
+                            <p>Loading post content. Please wait.</p>
+                        </div>
+
+                        <div class="feed-item-actions post-footer">
+                            <button class="feed-item-action reaction-btn" type="button"><span
+                                    class="material-symbols-outlined">chat</span></button>
+                            <button class="feed-item-action reaction-btn" type="button"><span
+                                    class="material-symbols-outlined">repeat</span></button>
+                            <button class="feed-item-action reaction-btn" type="button"><span
+                                    class="material-symbols-outlined">favorite</span></button>
+                            <button class="feed-item-action reaction-btn" type="button"><span
+                                    class="material-symbols-outlined">share</span></button>
+                        </div>
+                    </article>
                 </div>
-                <div class="feed-posts-list"></div>
             </main>
 
-            <!-- Right Sidebar -->
             <aside class="sidebar-right">
-                <!-- Trending Section -->
                 <div class="trending-card">
-                    <h3 class="trending-title">What's happening</h3>
-
+                    <h3 class="trending-title">What’s happening</h3>
                     <div class="trending-item">
                         <span class="trending-category">Technology • Trending</span>
-                        <h4 class="trending-topic">#WebDesign2024</h4>
-                        <span class="trending-count">45.2K posts</span>
+                        <h4 class="trending-topic">#DesignTokens</h4>
+                        <span class="trending-count">28.1K posts</span>
                     </div>
-
-                    <div class="trending-item">
-                        <span class="trending-category">Business • Trending</span>
-                        <h4 class="trending-topic">RemoteWork</h4>
-                        <span class="trending-count">12.5k posts</span>
-                    </div>
-
-                    <div class="trending-item">
-                        <span class="trending-category">Design • Trending</span>
-                        <h4 class="trending-topic">FigmaUpdate</h4>
-                        <span class="trending-count">8,432 posts</span>
-                    </div>
-                </div>
-
-                <!-- Who to Follow Section -->
-                <div class="who-to-follow-card">
-                    <h3 class="who-to-follow-title">Who to follow</h3>
-                    <a href="#" class="show-more-link">Show more</a>
                 </div>
             </aside>
         </div>
     </div>
 
     <!-- scripts -->
-    <script type="module" src="js/index.js"></script>
-    <script type="module" src="js/util/show.js"></script>
+    <script type="module" src="js/post-page.js"></script>
 </body>
 
 </html>

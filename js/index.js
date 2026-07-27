@@ -3,14 +3,11 @@ import { CreatePost, GetPosts } from './Api/postApi.js';
 import { getFollowSuggestions } from './Api/userApi.js';
 import { followUser, unfollowUser } from './Api/userApi.js';
 import { showEmptyFeedState, hideEmptyFeedState, showBanner, hideBanner } from './util/show.js'
+import { createPagination } from './util/pagination.js'
+import { extractTags, CreatePostFeedItem } from './util/post.js';
 
 let selectedImages = [];
-let feedPage = 1;
-const FEED_PAGE_SIZE = 10;
-let feedLoading = false;
-let feedHasMore = true;
 let feedPostsList = null;
-let loadFeed = async () => {};
 
 document.addEventListener('DOMContentLoaded', async function () {
     // Check if user is logged in
@@ -94,82 +91,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-window.addEventListener('scroll', () => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 300) {
-        loadFeed();
-    }
-});
-
-// Extract tags from post content
-function extractTags(content) {
-    const tagRegex = /#[\w]+/g;
-    const tags = content.match(tagRegex) || [];
-    return tags.map((tag) => tag.substring(1));
-}
-
-// Create Post feed item
-function CreatePostFeedItem(content, tags, postId, userProfile, imagesUrls, createdAt) {
-    if (!feedPostsList) {
-        feedPostsList = document.querySelector('.feed-posts-list');
-    }
-
-    if (feedPostsList) {
-        const emptyState = feedPostsList.querySelector('.feed-empty-state');
-        if (emptyState) {
-            emptyState.remove();
-        }
-    }
-
-    const tagsHTML = tags.length > 0
-        ? `<div class="feed-item-tags">${tags.map((tag) => `<a href="#${tag}" class="tag">#${tag}</a>`).join(' ')}</div>`
-        : '';
-
-    const imagesContainer = document.createElement('div');
-    imagesContainer.className = 'feed-item-images';
-
-    const imageHTML = imagesUrls && imagesUrls.length > 0
-        ? imagesUrls.map((url) => `<img src="${url}" alt="Post image" class="compose-image-preview-item">`).join('')
-        : '';
-
-    imagesContainer.innerHTML = imageHTML;
-
-    const postElement = document.createElement('article');
-    postElement.className = 'feed-item';
-    postElement.innerHTML = `
-        <div class="feed-item-header">
-            <img src="${userProfile.profilePictureUrl || 'https://api.dicebear.com/7.x/avataaars/svg?seed=User'}"
-                alt="${userProfile.userName}" class="feed-item-avatar">
-            <div class="feed-item-meta">
-                <div class="feed-item-user">
-                    <span class="feed-item-name">${userProfile.displayname || userProfile.username || userProfile.userName || 'User'}</span>
-                    <span class="feed-item-handle">@${userProfile.username || userProfile.userName || ''}</span>
-                </div>
-                <span class="feed-item-time">${createdAt ? new Date(createdAt).toLocaleString() : 'now'}</span>
-            </div>
-            <button class="feed-item-menu">
-                <span class="material-symbols-outlined">more_vert</span>
-            </button>
-        </div>
-        <div class="feed-item-content">
-            <p>${content}</p>
-            ${tagsHTML}
-            ${imagesContainer.outerHTML}
-        </div>
-        <div class="feed-item-actions">
-            <button class="feed-item-action"><span class="material-symbols-outlined">chat</span></button>
-            <button class="feed-item-action"><span class="material-symbols-outlined">repeat</span></button>
-            <button class="feed-item-action"><span class="material-symbols-outlined">favorite</span></button>
-            <button class="feed-item-action"><span class="material-symbols-outlined">share</span></button>
-        </div>
-    `;
-
-    if (feedPostsList) {
-        feedPostsList.prepend(postElement);
-    }
-
-    hideBanner();
-    showBanner('Post created successfully!', 'success');
-}
 
 function handleEmojiPicker() {
     // Show the emoji picker overlay
@@ -305,53 +226,47 @@ function handleImageRemoval() {
 //calling Api
 
 //Handle Feed loading
-loadFeed = async function (reset = false) {
-        if (feedLoading || (!feedHasMore && !reset)) return;
-        feedLoading = true;
-
-        if (reset) {
-            feedPage = 1;
-            feedHasMore = true;
-            if (feedPostsList) {
-                feedPostsList.innerHTML = '';
-            }
-        }
-
-        try {
-            const data = await GetPosts(feedPage, FEED_PAGE_SIZE);
-            const posts = Array.isArray(data) ? data : data.items || [];
-
-            if (!posts.length) {
-                showEmptyFeedState(feedPostsList);
-            } else {
-                hideEmptyFeedState(feedPostsList);
-                posts.forEach((post) => {
-                    CreatePostFeedItem(
-                        post.content || '',
-                        post.tags || [],
-                        post.id,
-                        userProfile,
-                        post.imagesURLs || post.images || [],
-                        post.createdAt || null
-                    );
-                });
-            }
-
-            if (posts.length < FEED_PAGE_SIZE) {
-                feedHasMore = false;
-            } else {
-                feedPage += 1;
-            }
-        } catch (err) {
-            throw err; // will be caught by the global error handler in the DOMContentLoaded event listener
-        } finally {
-            feedLoading = false;
-        }
-};
-
 async function handleFeedLoading() {
-    await loadFeed(true);
+        const feedPagination = createPagination({
+
+        pageSize: 10,
+
+        fetchData: GetPosts,
+
+        renderItems(posts) {
+            posts.forEach((post) => {
+                CreatePostFeedItem({
+                    content: post.content || '',
+                    tags: post.tags || [],
+                    postId: post.id,
+                    userProfile,
+                    imagesUrls: post.imagesURls || post.imagesURLs || post.images || [],
+                    createdAt: post.createdAt || null
+                });
+            });
+        },
+
+        emptyState: {
+            show() {
+                showEmptyFeedState(feedPostsList);
+            },
+
+            hide() {
+                hideEmptyFeedState(feedPostsList);
+            },
+
+            clear() {
+                feedPostsList.innerHTML = "";
+            }
+        }
+
+    });
+
+    await feedPagination.load(true);
+
+    feedPagination.attachInfiniteScroll();
 }
+
 
 // Handle post submission
 
@@ -379,7 +294,14 @@ function handlePostSubmission() {
                 const imagesURLs = response.imagesURls || response.imagesUrls || [];
 
                 hideEmptyFeedState(feedPostsList);
-                CreatePostFeedItem(contentText, tags, response.postId || response.id, userProfile, imagesURLs, response.createdAt || null);
+                CreatePostFeedItem({
+                    content: contentText,
+                    tags,
+                    postId: response.postId || response.id,
+                    userProfile,
+                    imagesUrls: imagesURLs,
+                    createdAt: response.createdAt || null
+                });
 
                 postContent.value = '';
                 selectedImages = [];

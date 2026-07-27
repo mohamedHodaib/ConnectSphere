@@ -2,6 +2,7 @@ import { GetUnReadNotifications, MarkNotificationAsRead, MarkAllNotificationsAsR
     from './Api/notificationsApi.js';
 import { followUser, unfollowUser } from './Api/userApi.js';
 import { showEmptyFeedState, hideEmptyFeedState, showBanner, hideBanner } from './util/show.js'
+import { createPagination } from './util/pagination.js'
 
 //frequently used elements 
 const notificationsContainer = document.querySelector('.notifications-container');
@@ -18,48 +19,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         window.location.replace('/login.html');
         return;
     }
-    //Get notifications from the server
+    //handle load notifications
     try {
-        const data = await GetUnReadNotifications();
-        const notifications = Array.isArray(data) ? data : data.items || [];
-
-        notifications.forEach(notification => {
-            // Display each notification
-            const notificationCard = document.createElement('section');
-            notificationCard.classList.add('notification-card', 'notification-card-accent');
-            notificationCard.innerHTML = `
-                <div class="notification-card-top">
-                    <div class="notification-avatar-wrap">
-                        <img src=${notification.actorProfilePictureUrl || 'default-avatar.png'}
-                            alt=${notification.actorName || 'User'} class="notification-avatar">
-                        <div>
-                            <div class="notification-title-row">
-                                <span class="notification-title">${notification.title || 'New Notification'}</span>
-                                <small>${notification.createdAt ? new Date(notification.createdAt).toLocaleString() : 'Just now'}</small>
-                            </div>
-                            <div class="notification-snippet">${notification.message || 'You have a new notification.'}</div>
-                        </div>
-                    </div>
-                    ${notification.type === 'follow'
-                        ? `<button class="notification-btn follow-btn">Follow Back</button>`
-                        : ''
-                    }
-                </div>
-            `;
-
-            // handle click event of notification card
-            handleNotificationClick(notificationCard,notification.id);
-
-            // handle follow click
-            if (notification.type === 'follow') {
-                const followBtn = document.querySelector(".follow-btn");
-                followBtn.dataset.following = "false";
-
-                handleFollowClick(followBtn, notification.actorId, notification.id);
-            }
-
-            notificationsContainer.appendChild(notificationCard);
-        });
+        await handleLoadingNotifications();
+        
     } catch (error) {
         if(error.message === 'Request timeout') {
             showBanner('Server took too long to respond. Please try again.', 'error');
@@ -95,6 +58,78 @@ document.addEventListener('DOMContentLoaded', async function () {
     
 
 });
+
+//Handle loading notifications
+
+// Display each notification
+async function CreateNotificationCard(notification) {
+    const notificationCard = document.createElement('section');
+    notificationCard.classList.add('notification-card', 'notification-card-accent');
+    notificationCard.innerHTML = `
+        <div class="notification-card-top">
+            <div class="notification-avatar-wrap">
+                <img src=${notification.actorProfilePictureUrl || 'default-avatar.png'}
+                    alt=${notification.actorName || 'User'} class="notification-avatar">
+                <div>
+                    <div class="notification-title-row">
+                        <span class="notification-title">${notification.title || 'New Notification'}</span>
+                        <small>${notification.createdAt ? new Date(notification.createdAt).toLocaleString() : 'Just now'}</small>
+                    </div>
+                    <div class="notification-snippet">${notification.message || 'You have a new notification.'}</div>
+                </div>
+            </div>
+            ${notification.type === 'follow'
+                ? `<button class="notification-btn follow-btn">Follow Back</button>`
+                : ''
+            }
+        </div>
+    `;
+    // handle click event of notification card
+    handleNotificationClick(notificationCard,notification.id);
+    // handle follow click
+    if (notification.type === 'follow') {
+        const followBtn = document.querySelector(".follow-btn");
+        followBtn.dataset.following = "false";
+        handleFollowClick(followBtn, notification.actorId, notification.id);
+    }
+    notificationsContainer.appendChild(notificationCard);
+}
+
+async function handleLoadingNotifications() {
+        const notificationPagination = createPagination({
+
+        pageSize: 20,
+
+        fetchData: GetUnReadNotifications,
+
+        renderItems(notifications) {
+
+            notifications.forEach(CreateNotificationCard);
+
+        },
+
+        emptyState: {
+
+            show() {
+                showEmptyFeedState(notificationsContainer);
+            },
+
+            hide() {
+                hideEmptyFeedState(notificationsContainer);
+            },
+
+            clear() {
+                notificationsContainer.innerHTML = "";
+            }
+
+        }
+
+    });
+
+    await notificationPagination.load(true);
+
+    notificationPagination.attachInfiniteScroll();
+}
 
 
 // handle mark all as read click 

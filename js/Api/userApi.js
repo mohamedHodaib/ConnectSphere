@@ -42,6 +42,12 @@ export const resetPassword = (email, token, password, confirmPassword) => apiCli
 
 export const getUserProfile = () => apiClient('/profile/me',{auth: true});
 
+export const updateSettings = (formData) => apiClient('/profile/settings', {
+    method: 'PUT',
+    auth: true,
+    formData: true,
+    body: formData
+});
 
 export const getFollowSuggestions = (page = 1, pageSize = 5) => apiClient(`/Recommendations?page=${page}&pageSize=${pageSize}`, { auth: true });
 

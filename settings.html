@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ConnectSphere - Settings</title>
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="css/designsystem.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/state.css">
+</head>
+
+<body class="home-page settings-page">
+    <div class="home-container">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="top-nav-logo">
+                <h1 class="top-nav-logo-text">ConnectSphere</h1>
+            </div>
+            <div class="top-nav-search">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" class="top-nav-search-input" placeholder="Search ConnectSphere">
+            </div>
+            <div class="top-nav-actions">
+                <button class="top-nav-icon-btn">
+                    <span class="material-symbols-outlined">mail</span>
+                </button>
+                <button class="top-nav-icon-btn">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="top-nav-icon-btn">
+                    <span class="material-symbols-outlined">account_circle</span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="main-feed-container">
+            <!-- Left Sidebar -->
+            <aside class="sidebar-left">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-nav-item">
+                        <span class="material-symbols-outlined">home</span>
+                        <span>Home</span>
+                    </a>
+                    <a href="notifications.html" class="sidebar-nav-item">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span>Notifications</span>
+                    </a>
+                    <a href="bookmarks.html" class="sidebar-nav-item">
+                        <span class="material-symbols-outlined">bookmarks</span>
+                        <span>Bookmarks</span>
+                    </a>
+                    <a href="settings.html" class="sidebar-nav-item active">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Center Feed -->
+            <main class="feed-center">
+                <div class="feed-header">
+                    <h2>Settings</h2>
+                </div>
+                <div id="banner" class="security_card_banner">
+                    <i id="banner-icon" class="fa-solid fa-envelope"></i>
+                    <span id="banner-text"></span>
+                </div>
+
+                <div class="settings-container">
+                    <form class="settings-card" aria-labelledby="settings-heading" enctype="multipart/form-data">
+                        <h3 id="settings-heading">Account Settings</h3>
+
+                        <div class="settings-section">
+                            <h4>Profile</h4>
+                            <div class="profile-image-row">
+                                <div class="profile-avatar-wrap">
+                                    <img src="image/avatar.jpg" alt="Profile avatar" class="profile-avatar">
+                                </div>
+                                <div class="profile-image-actions">
+                                    <label class="profile-update-btn">
+                                        <input id="profile-picture" type="file" accept="image/*" class="profile-image-input">
+                                        Update photo
+                                    </label>
+                                    <p class="profile-image-copy">Choose a square image for best results.</p>
+                                </div>
+                            </div>
+                            <div class="name-row">
+                                <div class="settings-field">
+                                    <label class="settings-label" for="first-name">First name</label>
+                                    <input id="first-name" class="settings-input" type="text" value="Jane">
+                                </div>
+                                <div class="settings-field">
+                                    <label class="settings-label" for="last-name">Last name</label>
+                                    <input id="last-name" class="settings-input" type="text" value="Doe">
+                                </div>
+                            </div>
+                            <div class="settings-field">
+                                <label class="settings-label" for="username">Username</label>
+                                <input id="username" class="settings-input" type="text" value="jane.doe">
+                            </div>
+                            <div class="settings-field">
+                                <label class="settings-label" for="bio">Bio</label>
+                                <textarea id="bio" class="settings-textarea" rows="3">Creative community builder.</textarea>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h4>Privacy</h4>
+                            <div class="settings-row">
+                                <div>
+                                    <p class="settings-label" for="is-private">Make profile private</p>
+                                </div>
+                                <div>
+                                    <label class="switch">
+                                        <input id="is-private" type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="settings-row">
+                                <div>
+                                    <p class="settings-label" for="show-online-status">Show online status</p>
+                                </div>
+                                <div>
+                                    <label class="switch">
+                                        <input id="show-online-status" type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h4>Notifications</h4>
+                            <div class="settings-row">
+                                <div>
+                                    <p class="settings-label" for="email-notifications">Email notifications</p>
+                                </div>
+                                <div>
+                                    <label class="switch">
+                                        <input id="email-notifications" type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-actions">
+                            <button type="button" class="security_card_form_submit">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+
+        </div>
+    </div>
+    <script type="module" src="js/settings.js"></script>
+</body>
+
+</html>

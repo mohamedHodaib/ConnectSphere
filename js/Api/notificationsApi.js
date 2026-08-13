@@ -4,6 +4,9 @@ export const GetUnReadNotifications = (page = 1, pageSize = 10) =>
     apiClient(`/Notifications?page=${page}&pageSize=${pageSize}&unreadOnly=true`
         , { auth: true });
 
+export const GetUnReadNotificationsCount = () =>
+    apiClient(`/Notifications/unread-count`, { auth: true });
+
 export const MarkNotificationAsRead = (notificationId) =>
     apiClient(`/Notifications/${notificationId}/read`, { method: 'POST', auth: true });
 

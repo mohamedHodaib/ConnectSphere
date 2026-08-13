@@ -33,6 +33,9 @@ export const CreatePost = (content, tags = [], images = []) => {
 export const GetPosts = (page = 1, pageSize = 10) =>
     apiClient(`/Feed?page=${page}&pageSize=${pageSize}`, { auth: true });
 
+export const GetUserReactedPosts = (page = 1, pageSize = 10) =>
+    apiClient(`/Posts/reacted?page=${page}&pageSize=${pageSize}`, { auth: true });
+
 export const GetPost = (postId) =>
     apiClient(`/Posts/${postId}`, { auth: true });
 

@@ -137,6 +137,12 @@ async function handleMarkAllAsReadClick() {
     try {
         await MarkAllNotificationsAsRead();
 
+        // make the notifications count badge disappear
+        const notificationBadge = document.querySelector('.notification-badge');
+        if (notificationBadge) {
+            notificationBadge.remove();
+        }
+
         showEmptyFeedState();
     } catch (error) {
         throw error;
@@ -157,6 +163,18 @@ async function handleMarkNotificationAsRead(id) {
     try {
         // Mark notification as read
         const response = await MarkNotificationAsRead(id);
+
+        // make the notifications count decrease by 1
+        const notificationBadge = document.querySelector('.notification-badge');
+        if (notificationBadge) {
+            const currentCount = parseInt(notificationBadge.textContent, 10);
+            const newCount = currentCount - 1;
+            if (newCount > 0) {
+                notificationBadge.textContent = newCount;
+            } else {
+                notificationBadge.remove();
+            }
+        }
     } catch (error) {
         if (error.status === 404) {
             showBanner('Notification not found. It may have already been marked as read.', 'warning');

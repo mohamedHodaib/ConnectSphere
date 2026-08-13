@@ -40,9 +40,16 @@ export const resetPassword = (email, token, password, confirmPassword) => apiCli
 });
 
 
-export const getUserProfile = () => apiClient('/profile/me',{auth: true});
 
-export const updateSettings = (formData) => apiClient('/profile/settings', {
+export const getUserProfileImage = () => apiClient(`/profile/me/picture-url`, { auth: true });
+
+export const getUserProfile = () => apiClient('/profile/me', { auth: true });
+
+export const getSettings = () => apiClient('/profile/me/settings', { auth: true });
+
+export const getPublicUserProfile = (userName) => apiClient(`/profile/${encodeURIComponent(userName)}`, { auth: true });
+
+export const updateSettings = (formData) => apiClient('/profile/me/settings', {
     method: 'PUT',
     auth: true,
     formData: true,

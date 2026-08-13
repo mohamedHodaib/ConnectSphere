@@ -1,6 +1,4 @@
-
-
-import { updateSettings, getUserProfile } from './Api/userApi.js';
+import { updateSettings, getSettings } from './Api/userApi.js';
 import { showBanner } from './util/show.js';
 
 const saveChangesBtn = document.querySelector('.security_card_form_submit');
@@ -65,6 +63,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
+
 //handle clicking save 
 if (saveChangesBtn) {
     saveChangesBtn.addEventListener('click', async function () {
@@ -74,7 +73,7 @@ if (saveChangesBtn) {
             formData.append('FirstName', firstNameInput.value.trim());
             formData.append('LastName', lastNameInput.value.trim());
             formData.append('Username', usernameInput.value.trim());
-            formData.append('Bio', bioInput.value.trim());
+            formData.append('Biography', bioInput.value.trim());
             formData.append('IsPrivate', isPrivateInput.checked ? 'true' : 'false');
             formData.append('ShowOnlineStatus', showOnlineStatusInput.checked ? 'true' : 'false');
             formData.append('EmailNotificationsEnabled', emailNotificationsInput.checked ? 'true' : 'false');
@@ -86,55 +85,58 @@ if (saveChangesBtn) {
             await updateSettings(formData);
             showBanner('Settings saved successfully.', 'success');
         } catch (error) {
-            if (error.message === 'Request timeout') {
-                showBanner('Server took too long to respond. Please try again.', 'error');
-                return;
-            }
+            console.error('Error saving settings:', error);
+            // if (error.message === 'Request timeout') {
+            //     showBanner('Server took too long to respond. Please try again.', 'error');
+            //     return;
+            // }
 
-            if (error.status === 400) {
-                showBanner(error.data?.detail || error.message || 'Validation error.', 'warning');
-                return;
-            }
+            // if (error.status === 400) {
+            //     showBanner(error.data?.detail || error.message || 'Validation error.', 'warning');
+            //     return;
+            // }
 
-            if (error.status === 401) {
-                localStorage.removeItem('token');
-                window.location.replace('/login.html');
-                return;
-            }
+            // if (error.status === 401) {
+            //     localStorage.removeItem('token');
+            //     window.location.replace('/login.html');
+            //     return;
+            // }
 
-            if (error.status === 404) {
-                localStorage.removeItem('token');
-                window.location.replace('/login.html');
-                sessionStorage.setItem('loginMessage', 'User not found. Please log in again.');
-                return;
-            }
+            // if (error.status === 404) {
+            //     localStorage.removeItem('token');
+            //     window.location.replace('/login.html');
+            //     sessionStorage.setItem('loginMessage', 'User not found. Please log in again.');
+            //     return;
+            // }
 
-            if (error.status === 500) {
-                showBanner('Server error. Please try again later.', 'error');
-                return;
-            }
+            // if (error.status === 500) {
+            //     showBanner('Server error. Please try again later.', 'error');
+            //     return;
+            // }
 
-            showBanner(error.message || 'Unable to save settings. Please try again.', 'error');
+            // showBanner(error.message || 'Unable to save settings. Please try again.', 'error');
         }
     });
 }
 
-function handleLoadingSettingsInfo() {
-    return getUserProfile().then(user => {
-        if (!user) return;
+async function handleLoadingSettingsInfo() {
+    console.log('Loading settings info...');
+    const settings = await getSettings();
+    if (!settings) return;
 
-        firstNameInput.value = user.firstName || '';
-        lastNameInput.value = user.lastName || '';
-        usernameInput.value = user.userName || '';
-        bioInput.value = user.bio || '';
-        isPrivateInput.checked = user.isPrivate ?? false;
-        showOnlineStatusInput.checked = user.showOnlineStatus ?? false;
-        emailNotificationsInput.checked = user.emailNotificationsEnabled ?? false;
+    console.log('Settings loaded:', settings);
 
-        if (user.profilePictureUrl) {
-            profileAvatar.src = user.profilePictureUrl;
-        }
-    });
+    firstNameInput.value = settings.firstName || '';
+    lastNameInput.value = settings.lastName || '';
+    usernameInput.value = settings.username || '';
+    bioInput.value = settings.biography || '';
+    isPrivateInput.checked = settings.isPrivate ?? false;
+    showOnlineStatusInput.checked = settings.showOnlineStatus ?? false;
+    emailNotificationsInput.checked = settings.emailNotificationsEnabled ?? false;
+
+    if (settings.profilePictureUrl) {
+        profileAvatar.src = settings.profilePictureUrl;
+    }
 }
 
 

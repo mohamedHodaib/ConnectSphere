@@ -150,6 +150,7 @@ function CreateFollowSuggestionsUsers(users) {
     users.forEach((user) => {
         const userElement = document.createElement('div');
         userElement.className = 'follow-user';
+        userElement.dataset.profileUrl = `profile.html?user=${encodeURIComponent(user.userName)}`;
 
         userElement.innerHTML = `
             <img src="${user.profilePicture ?? 'https://api.dicebear.com/7.x/avataaars/svg?seed=Unknown'}" alt="${user.displayName}" class="follow-user-avatar">
@@ -157,11 +158,22 @@ function CreateFollowSuggestionsUsers(users) {
                 <span class="follow-user-name">${user.displayName}</span>
                 <span class="follow-user-handle">@${user.userName}</span>
             </div>
-            <button class="follow-user-btn" data-user-id="${user.id}">Follow</button>
+            <button class="follow-user-btn" data-user-id="${user.id}" type="button">Follow</button>
         `;
 
-            suggestionsContainer.appendChild(userElement);
+        userElement.addEventListener('click', (event) => {
+            if (event.target.closest('.follow-user-btn')) {
+                return;
+            }
+
+            const profileUrl = event.currentTarget.dataset.profileUrl;
+            if (profileUrl) {
+                window.location.href = profileUrl;
+            }
         });
+
+        suggestionsContainer.appendChild(userElement);
+    });
 }
 
 //Handle Image selection and removal from preview

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/icon.png" type="image/png">
-    <title>ConnectSphere - Post</title>
+    <title>ConnectSphere - Profile</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -18,8 +18,12 @@
     <link rel="stylesheet" href="css/state.css">
 </head>
 
-<body class="home-page">
+<body class="home-page profile-page">
     <div class="home-container">
+        <div id="banner" class="security_card_banner">
+            <span id="banner-icon" class="fa-solid fa-envelope"></span>
+            <p id="banner-text"></p>
+        </div>
         <nav class="top-nav">
             <div class="top-nav-logo">
                 <h1 class="top-nav-logo-text">ConnectSphere</h1>
@@ -41,7 +45,7 @@
         <div class="main-feed-container">
             <aside class="sidebar-left">
                 <nav class="sidebar-nav">
-                    <a href="index.html" class="sidebar-nav-item active">
+                    <a href="index.html" class="sidebar-nav-item">
                         <span class="material-symbols-outlined">home</span>
                         <span>Home</span>
                     </a>
@@ -53,12 +57,11 @@
                         <span class="material-symbols-outlined">bookmarks</span>
                         <span>Bookmarks</span>
                     </a>
-                    <a href="profile.html" class="sidebar-nav-item">
+                    <a href="profile.html" class="sidebar-nav-item active">
                         <span class="material-symbols-outlined">person</span>
                         <span>Profile</span>
                     </a>
                 </nav>
-
                 <div class="sidebar-footer">
                     <a href="settings.html" class="sidebar-nav-item">
                         <span class="material-symbols-outlined">settings</span>
@@ -68,14 +71,25 @@
             </aside>
 
             <main class="feed-center">
-                <div class="post-container">
+                <div class="feed-header">
+                    <h2>Profile</h2>
+                </div>
+
+                <div class="profile-posts-list">
+
                 </div>
             </main>
+
+            <aside class="sidebar-right">
+                <div class="who-to-follow-card">
+                    <h3 class="who-to-follow-title">Who to follow</h3>
+                    <a href="#" class="show-more-link">Show more</a>
+                    <div class="who-to-follow-list"></div>
+                </div>
+            </aside>
         </div>
     </div>
-
-    <!-- scripts -->
-    <script type="module" src="js/post-page.js"></script>
+    <script type="module" src="js/profile.js"></script>
     <script type="module" src="js/util/global.js"></script>
 </body>
 

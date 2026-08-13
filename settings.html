@@ -30,15 +30,11 @@
                 <input type="text" class="top-nav-search-input" placeholder="Search ConnectSphere">
             </div>
             <div class="top-nav-actions">
-                <button class="top-nav-icon-btn">
-                    <span class="material-symbols-outlined">mail</span>
+                <button class="top-nav-icon-btn notification-btn">
+                    <span class="material-symbols-outlined ">notifications</span>
                 </button>
-                <button class="top-nav-icon-btn">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <span class="notification-badge">3</span>
-                </button>
-                <button class="top-nav-icon-btn">
-                    <span class="material-symbols-outlined">account_circle</span>
+                <button class="top-nav-icon-btn account-btn">
+                    <img src="./image/default-image-profile.png" alt="Your avatar">
                 </button>
             </div>
         </nav>
@@ -47,7 +43,7 @@
             <!-- Left Sidebar -->
             <aside class="sidebar-left">
                 <nav class="sidebar-nav">
-                    <a href="index.html" class="sidebar-nav-item">
+                    <a href="index.html" class="sidebar-nav-item ">
                         <span class="material-symbols-outlined">home</span>
                         <span>Home</span>
                     </a>
@@ -59,11 +55,18 @@
                         <span class="material-symbols-outlined">bookmarks</span>
                         <span>Bookmarks</span>
                     </a>
+                    <a href="profile.html" class="sidebar-nav-item">
+                        <span class="material-symbols-outlined">person</span>
+                        <span>Profile</span>
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
                     <a href="settings.html" class="sidebar-nav-item active">
                         <span class="material-symbols-outlined">settings</span>
                         <span>Settings</span>
                     </a>
-                </nav>
+                </div>
             </aside>
 
             <!-- Center Feed -->
@@ -88,7 +91,8 @@
                                 </div>
                                 <div class="profile-image-actions">
                                     <label class="profile-update-btn">
-                                        <input id="profile-picture" type="file" accept="image/*" class="profile-image-input">
+                                        <input id="profile-picture" type="file" accept="image/*"
+                                            class="profile-image-input">
                                         Update photo
                                     </label>
                                     <p class="profile-image-copy">Choose a square image for best results.</p>
@@ -97,20 +101,20 @@
                             <div class="name-row">
                                 <div class="settings-field">
                                     <label class="settings-label" for="first-name">First name</label>
-                                    <input id="first-name" class="settings-input" type="text" value="Jane">
+                                    <input id="first-name" class="settings-input" type="text">
                                 </div>
                                 <div class="settings-field">
                                     <label class="settings-label" for="last-name">Last name</label>
-                                    <input id="last-name" class="settings-input" type="text" value="Doe">
+                                    <input id="last-name" class="settings-input" type="text">
                                 </div>
                             </div>
                             <div class="settings-field">
                                 <label class="settings-label" for="username">Username</label>
-                                <input id="username" class="settings-input" type="text" value="jane.doe">
+                                <input id="username" class="settings-input" type="text">
                             </div>
                             <div class="settings-field">
                                 <label class="settings-label" for="bio">Bio</label>
-                                <textarea id="bio" class="settings-textarea" rows="3">Creative community builder.</textarea>
+                                <textarea id="bio" class="settings-textarea" rows="3"></textarea>
                             </div>
                         </div>
 
@@ -165,6 +169,7 @@
         </div>
     </div>
     <script type="module" src="js/settings.js"></script>
+    <script type="module" src="js/util/global.js"></script>
 </body>
 
 </html>

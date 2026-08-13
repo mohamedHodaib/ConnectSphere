@@ -1,6 +1,6 @@
 import { hideBanner, showBanner } from './show.js';
 
-const DEFAULT_AVATAR = 'https://api.dicebear.com/7.x/avataaars/svg?seed=User';
+const DEFAULT_AVATAR = './image/default-image-profile.png';
 
 export function extractTags(content) {
     const tagRegex = /#[\w]+/g;
